@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -24,11 +25,12 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>shopping_cart</title>
   <link rel="manifest" href="manifest.json">
 </head>
+
 <body>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
@@ -40,6 +42,24 @@
       });
     }
   </script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-firestore.js"></script>
+  <!-- Firebase Configuration -->
+  <script>
+    var firebaseConfig = {
+      apiKey: "AIzaSyBsZu_dKzutUPs1PkkH8Xo4QxLoq22lMoQ",
+      authDomain: "shopping-cart-6f91b.firebaseapp.com",
+      projectId: "shopping-cart-6f91b",
+      storageBucket: "shopping-cart-6f91b.appspot.com",
+      messagingSenderId: "905328724441",
+      appId: "1:905328724441:web:fdafd4b87af82bd810f1c8"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
   <script src="main.dart.js" type="application/javascript"></script>
 </body>
+
 </html>
