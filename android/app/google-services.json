@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "905328724441",
+    "project_id": "shopping-cart-6f91b",
+    "storage_bucket": "shopping-cart-6f91b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905328724441:android:6c86eefaf1f8466e10f1c8",
+        "android_client_info": {
+          "package_name": "com.tul.shopping_cart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905328724441-4l7sj5tagk0v27702hri9dnv4683p9f4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBULRTpX_CeYqCUCNWSC6TGswXX7PbSKto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905328724441-4l7sj5tagk0v27702hri9dnv4683p9f4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
