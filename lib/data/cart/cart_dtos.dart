@@ -21,6 +21,16 @@ class CartDto with _$CartDto {
   factory CartDto.fromJson(Map<String, dynamic> json) =>
       _$CartDtoFromJson(json);
 
+  factory CartDto.fromDomain(Cart cart) {
+    return CartDto(
+      id: cart.id,
+      status: describeEnum(cart.status),
+      items: cart.items.map((e) {
+        return ProductCartDto.fromDomain(e);
+      }).toList(),
+    );
+  }
+
   Cart toDomain() {
     return Cart(
       id: id,
@@ -42,6 +52,14 @@ class ProductCartDto with _$ProductCartDto {
     required String name,
     required int quantity,
   }) = _ProductCartDto;
+
+  factory ProductCartDto.fromDomain(ProductCart productCart) {
+    return ProductCartDto(
+      productId: productCart.productId,
+      name: productCart.name,
+      quantity: productCart.quantity,
+    );
+  }
 
   factory ProductCartDto.fromJson(Map<String, dynamic> json) =>
       _$ProductCartDtoFromJson(json);

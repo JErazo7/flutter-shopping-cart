@@ -8,5 +8,4 @@ abstract class ICartRepository {
   Stream<Either<CartFailure, Cart>> watchPendingCart();
   Future<Either<CartFailure, Unit>> createCart(Cart cart);
   Future<Either<CartFailure, Unit>> updateCart(Cart cart);
-  Future<Either<CartFailure, Unit>> removeCart(Cart cart);
 }
