@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:shopping_cart/my_bloc_observer.dart';
 
 import 'injection.dart';
+import 'presentation/app_widget.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,18 +18,5 @@ Future<void> main() async {
   // Firebase is initialized
   await Firebase.initializeApp();
 
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-    );
-  }
+  runApp(AppWidget());
 }

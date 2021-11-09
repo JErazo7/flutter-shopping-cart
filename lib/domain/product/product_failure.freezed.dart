@@ -24,10 +24,6 @@ class _$ProductFailureTearOff {
   InsufficientPermissions insufficientPermissions() {
     return const InsufficientPermissions();
   }
-
-  UnableToUpdate unableToUpdate() {
-    return const UnableToUpdate();
-  }
 }
 
 /// @nodoc
@@ -39,21 +35,18 @@ mixin _$ProductFailure {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
-    required TResult Function() unableToUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
-    TResult Function()? unableToUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
-    TResult Function()? unableToUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -62,21 +55,18 @@ mixin _$ProductFailure {
     required TResult Function(Unexpected value) unexpected,
     required TResult Function(InsufficientPermissions value)
         insufficientPermissions,
-    required TResult Function(UnableToUpdate value) unableToUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Unexpected value)? unexpected,
     TResult Function(InsufficientPermissions value)? insufficientPermissions,
-    TResult Function(UnableToUpdate value)? unableToUpdate,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Unexpected value)? unexpected,
     TResult Function(InsufficientPermissions value)? insufficientPermissions,
-    TResult Function(UnableToUpdate value)? unableToUpdate,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,7 +130,6 @@ class _$Unexpected implements Unexpected {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
-    required TResult Function() unableToUpdate,
   }) {
     return unexpected();
   }
@@ -150,7 +139,6 @@ class _$Unexpected implements Unexpected {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
-    TResult Function()? unableToUpdate,
   }) {
     return unexpected?.call();
   }
@@ -160,7 +148,6 @@ class _$Unexpected implements Unexpected {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
-    TResult Function()? unableToUpdate,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -175,7 +162,6 @@ class _$Unexpected implements Unexpected {
     required TResult Function(Unexpected value) unexpected,
     required TResult Function(InsufficientPermissions value)
         insufficientPermissions,
-    required TResult Function(UnableToUpdate value) unableToUpdate,
   }) {
     return unexpected(this);
   }
@@ -185,7 +171,6 @@ class _$Unexpected implements Unexpected {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Unexpected value)? unexpected,
     TResult Function(InsufficientPermissions value)? insufficientPermissions,
-    TResult Function(UnableToUpdate value)? unableToUpdate,
   }) {
     return unexpected?.call(this);
   }
@@ -195,7 +180,6 @@ class _$Unexpected implements Unexpected {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Unexpected value)? unexpected,
     TResult Function(InsufficientPermissions value)? insufficientPermissions,
-    TResult Function(UnableToUpdate value)? unableToUpdate,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -252,7 +236,6 @@ class _$InsufficientPermissions implements InsufficientPermissions {
   TResult when<TResult extends Object?>({
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
-    required TResult Function() unableToUpdate,
   }) {
     return insufficientPermissions();
   }
@@ -262,7 +245,6 @@ class _$InsufficientPermissions implements InsufficientPermissions {
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
-    TResult Function()? unableToUpdate,
   }) {
     return insufficientPermissions?.call();
   }
@@ -272,7 +254,6 @@ class _$InsufficientPermissions implements InsufficientPermissions {
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
-    TResult Function()? unableToUpdate,
     required TResult orElse(),
   }) {
     if (insufficientPermissions != null) {
@@ -287,7 +268,6 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     required TResult Function(Unexpected value) unexpected,
     required TResult Function(InsufficientPermissions value)
         insufficientPermissions,
-    required TResult Function(UnableToUpdate value) unableToUpdate,
   }) {
     return insufficientPermissions(this);
   }
@@ -297,7 +277,6 @@ class _$InsufficientPermissions implements InsufficientPermissions {
   TResult? mapOrNull<TResult extends Object?>({
     TResult Function(Unexpected value)? unexpected,
     TResult Function(InsufficientPermissions value)? insufficientPermissions,
-    TResult Function(UnableToUpdate value)? unableToUpdate,
   }) {
     return insufficientPermissions?.call(this);
   }
@@ -307,7 +286,6 @@ class _$InsufficientPermissions implements InsufficientPermissions {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(Unexpected value)? unexpected,
     TResult Function(InsufficientPermissions value)? insufficientPermissions,
-    TResult Function(UnableToUpdate value)? unableToUpdate,
     required TResult orElse(),
   }) {
     if (insufficientPermissions != null) {
@@ -319,116 +297,4 @@ class _$InsufficientPermissions implements InsufficientPermissions {
 
 abstract class InsufficientPermissions implements ProductFailure {
   const factory InsufficientPermissions() = _$InsufficientPermissions;
-}
-
-/// @nodoc
-abstract class $UnableToUpdateCopyWith<$Res> {
-  factory $UnableToUpdateCopyWith(
-          UnableToUpdate value, $Res Function(UnableToUpdate) then) =
-      _$UnableToUpdateCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class _$UnableToUpdateCopyWithImpl<$Res>
-    extends _$ProductFailureCopyWithImpl<$Res>
-    implements $UnableToUpdateCopyWith<$Res> {
-  _$UnableToUpdateCopyWithImpl(
-      UnableToUpdate _value, $Res Function(UnableToUpdate) _then)
-      : super(_value, (v) => _then(v as UnableToUpdate));
-
-  @override
-  UnableToUpdate get _value => super._value as UnableToUpdate;
-}
-
-/// @nodoc
-
-class _$UnableToUpdate implements UnableToUpdate {
-  const _$UnableToUpdate();
-
-  @override
-  String toString() {
-    return 'ProductFailure.unableToUpdate()';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is UnableToUpdate);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() unexpected,
-    required TResult Function() insufficientPermissions,
-    required TResult Function() unableToUpdate,
-  }) {
-    return unableToUpdate();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? insufficientPermissions,
-    TResult Function()? unableToUpdate,
-  }) {
-    return unableToUpdate?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? unexpected,
-    TResult Function()? insufficientPermissions,
-    TResult Function()? unableToUpdate,
-    required TResult orElse(),
-  }) {
-    if (unableToUpdate != null) {
-      return unableToUpdate();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(Unexpected value) unexpected,
-    required TResult Function(InsufficientPermissions value)
-        insufficientPermissions,
-    required TResult Function(UnableToUpdate value) unableToUpdate,
-  }) {
-    return unableToUpdate(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult Function(Unexpected value)? unexpected,
-    TResult Function(InsufficientPermissions value)? insufficientPermissions,
-    TResult Function(UnableToUpdate value)? unableToUpdate,
-  }) {
-    return unableToUpdate?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(Unexpected value)? unexpected,
-    TResult Function(InsufficientPermissions value)? insufficientPermissions,
-    TResult Function(UnableToUpdate value)? unableToUpdate,
-    required TResult orElse(),
-  }) {
-    if (unableToUpdate != null) {
-      return unableToUpdate(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class UnableToUpdate implements ProductFailure {
-  const factory UnableToUpdate() = _$UnableToUpdate;
 }

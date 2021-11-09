@@ -19,12 +19,6 @@ class CartRepository implements ICartRepository {
   }
 
   @override
-  Stream<Either<CartFailure, List<Cart>>> watchCarts() {
-    // TODO: implement getCarts
-    throw UnimplementedError();
-  }
-
-  @override
   Future<Either<CartFailure, Unit>> removeCart(Cart cart) {
     // TODO: implement removeCart
     throw UnimplementedError();
@@ -33,6 +27,18 @@ class CartRepository implements ICartRepository {
   @override
   Future<Either<CartFailure, Unit>> updateCart(Cart cart) {
     // TODO: implement updateCart
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<Either<CartFailure, List<Cart>>> getCarts() {
+    // TODO: implement getCarts
+    throw UnimplementedError();
+  }
+
+  @override
+  Stream<Either<CartFailure, Cart>> watchPendingCart() {
+    // TODO: implement watchPendingCart
     throw UnimplementedError();
   }
 }

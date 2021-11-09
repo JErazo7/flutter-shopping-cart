@@ -28,6 +28,10 @@ class _$CartFailureTearOff {
   UnableToUpdate unableToUpdate() {
     return const UnableToUpdate();
   }
+
+  NoPendingCart noPendingCart() {
+    return const NoPendingCart();
+  }
 }
 
 /// @nodoc
@@ -40,6 +44,7 @@ mixin _$CartFailure {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
     required TResult Function() unableToUpdate,
+    required TResult Function() noPendingCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -47,6 +52,7 @@ mixin _$CartFailure {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? noPendingCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -54,6 +60,7 @@ mixin _$CartFailure {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? noPendingCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -63,6 +70,7 @@ mixin _$CartFailure {
     required TResult Function(InsufficientPermissions value)
         insufficientPermissions,
     required TResult Function(UnableToUpdate value) unableToUpdate,
+    required TResult Function(NoPendingCart value) noPendingCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -70,6 +78,7 @@ mixin _$CartFailure {
     TResult Function(Unexpected value)? unexpected,
     TResult Function(InsufficientPermissions value)? insufficientPermissions,
     TResult Function(UnableToUpdate value)? unableToUpdate,
+    TResult Function(NoPendingCart value)? noPendingCart,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -77,6 +86,7 @@ mixin _$CartFailure {
     TResult Function(Unexpected value)? unexpected,
     TResult Function(InsufficientPermissions value)? insufficientPermissions,
     TResult Function(UnableToUpdate value)? unableToUpdate,
+    TResult Function(NoPendingCart value)? noPendingCart,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -140,6 +150,7 @@ class _$Unexpected implements Unexpected {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
     required TResult Function() unableToUpdate,
+    required TResult Function() noPendingCart,
   }) {
     return unexpected();
   }
@@ -150,6 +161,7 @@ class _$Unexpected implements Unexpected {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? noPendingCart,
   }) {
     return unexpected?.call();
   }
@@ -160,6 +172,7 @@ class _$Unexpected implements Unexpected {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? noPendingCart,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -175,6 +188,7 @@ class _$Unexpected implements Unexpected {
     required TResult Function(InsufficientPermissions value)
         insufficientPermissions,
     required TResult Function(UnableToUpdate value) unableToUpdate,
+    required TResult Function(NoPendingCart value) noPendingCart,
   }) {
     return unexpected(this);
   }
@@ -185,6 +199,7 @@ class _$Unexpected implements Unexpected {
     TResult Function(Unexpected value)? unexpected,
     TResult Function(InsufficientPermissions value)? insufficientPermissions,
     TResult Function(UnableToUpdate value)? unableToUpdate,
+    TResult Function(NoPendingCart value)? noPendingCart,
   }) {
     return unexpected?.call(this);
   }
@@ -195,6 +210,7 @@ class _$Unexpected implements Unexpected {
     TResult Function(Unexpected value)? unexpected,
     TResult Function(InsufficientPermissions value)? insufficientPermissions,
     TResult Function(UnableToUpdate value)? unableToUpdate,
+    TResult Function(NoPendingCart value)? noPendingCart,
     required TResult orElse(),
   }) {
     if (unexpected != null) {
@@ -252,6 +268,7 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
     required TResult Function() unableToUpdate,
+    required TResult Function() noPendingCart,
   }) {
     return insufficientPermissions();
   }
@@ -262,6 +279,7 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? noPendingCart,
   }) {
     return insufficientPermissions?.call();
   }
@@ -272,6 +290,7 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? noPendingCart,
     required TResult orElse(),
   }) {
     if (insufficientPermissions != null) {
@@ -287,6 +306,7 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     required TResult Function(InsufficientPermissions value)
         insufficientPermissions,
     required TResult Function(UnableToUpdate value) unableToUpdate,
+    required TResult Function(NoPendingCart value) noPendingCart,
   }) {
     return insufficientPermissions(this);
   }
@@ -297,6 +317,7 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     TResult Function(Unexpected value)? unexpected,
     TResult Function(InsufficientPermissions value)? insufficientPermissions,
     TResult Function(UnableToUpdate value)? unableToUpdate,
+    TResult Function(NoPendingCart value)? noPendingCart,
   }) {
     return insufficientPermissions?.call(this);
   }
@@ -307,6 +328,7 @@ class _$InsufficientPermissions implements InsufficientPermissions {
     TResult Function(Unexpected value)? unexpected,
     TResult Function(InsufficientPermissions value)? insufficientPermissions,
     TResult Function(UnableToUpdate value)? unableToUpdate,
+    TResult Function(NoPendingCart value)? noPendingCart,
     required TResult orElse(),
   }) {
     if (insufficientPermissions != null) {
@@ -363,6 +385,7 @@ class _$UnableToUpdate implements UnableToUpdate {
     required TResult Function() unexpected,
     required TResult Function() insufficientPermissions,
     required TResult Function() unableToUpdate,
+    required TResult Function() noPendingCart,
   }) {
     return unableToUpdate();
   }
@@ -373,6 +396,7 @@ class _$UnableToUpdate implements UnableToUpdate {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? noPendingCart,
   }) {
     return unableToUpdate?.call();
   }
@@ -383,6 +407,7 @@ class _$UnableToUpdate implements UnableToUpdate {
     TResult Function()? unexpected,
     TResult Function()? insufficientPermissions,
     TResult Function()? unableToUpdate,
+    TResult Function()? noPendingCart,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -398,6 +423,7 @@ class _$UnableToUpdate implements UnableToUpdate {
     required TResult Function(InsufficientPermissions value)
         insufficientPermissions,
     required TResult Function(UnableToUpdate value) unableToUpdate,
+    required TResult Function(NoPendingCart value) noPendingCart,
   }) {
     return unableToUpdate(this);
   }
@@ -408,6 +434,7 @@ class _$UnableToUpdate implements UnableToUpdate {
     TResult Function(Unexpected value)? unexpected,
     TResult Function(InsufficientPermissions value)? insufficientPermissions,
     TResult Function(UnableToUpdate value)? unableToUpdate,
+    TResult Function(NoPendingCart value)? noPendingCart,
   }) {
     return unableToUpdate?.call(this);
   }
@@ -418,6 +445,7 @@ class _$UnableToUpdate implements UnableToUpdate {
     TResult Function(Unexpected value)? unexpected,
     TResult Function(InsufficientPermissions value)? insufficientPermissions,
     TResult Function(UnableToUpdate value)? unableToUpdate,
+    TResult Function(NoPendingCart value)? noPendingCart,
     required TResult orElse(),
   }) {
     if (unableToUpdate != null) {
@@ -429,4 +457,121 @@ class _$UnableToUpdate implements UnableToUpdate {
 
 abstract class UnableToUpdate implements CartFailure {
   const factory UnableToUpdate() = _$UnableToUpdate;
+}
+
+/// @nodoc
+abstract class $NoPendingCartCopyWith<$Res> {
+  factory $NoPendingCartCopyWith(
+          NoPendingCart value, $Res Function(NoPendingCart) then) =
+      _$NoPendingCartCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class _$NoPendingCartCopyWithImpl<$Res> extends _$CartFailureCopyWithImpl<$Res>
+    implements $NoPendingCartCopyWith<$Res> {
+  _$NoPendingCartCopyWithImpl(
+      NoPendingCart _value, $Res Function(NoPendingCart) _then)
+      : super(_value, (v) => _then(v as NoPendingCart));
+
+  @override
+  NoPendingCart get _value => super._value as NoPendingCart;
+}
+
+/// @nodoc
+
+class _$NoPendingCart implements NoPendingCart {
+  const _$NoPendingCart();
+
+  @override
+  String toString() {
+    return 'CartFailure.noPendingCart()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is NoPendingCart);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() unexpected,
+    required TResult Function() insufficientPermissions,
+    required TResult Function() unableToUpdate,
+    required TResult Function() noPendingCart,
+  }) {
+    return noPendingCart();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermissions,
+    TResult Function()? unableToUpdate,
+    TResult Function()? noPendingCart,
+  }) {
+    return noPendingCart?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? unexpected,
+    TResult Function()? insufficientPermissions,
+    TResult Function()? unableToUpdate,
+    TResult Function()? noPendingCart,
+    required TResult orElse(),
+  }) {
+    if (noPendingCart != null) {
+      return noPendingCart();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Unexpected value) unexpected,
+    required TResult Function(InsufficientPermissions value)
+        insufficientPermissions,
+    required TResult Function(UnableToUpdate value) unableToUpdate,
+    required TResult Function(NoPendingCart value) noPendingCart,
+  }) {
+    return noPendingCart(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult Function(Unexpected value)? unexpected,
+    TResult Function(InsufficientPermissions value)? insufficientPermissions,
+    TResult Function(UnableToUpdate value)? unableToUpdate,
+    TResult Function(NoPendingCart value)? noPendingCart,
+  }) {
+    return noPendingCart?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Unexpected value)? unexpected,
+    TResult Function(InsufficientPermissions value)? insufficientPermissions,
+    TResult Function(UnableToUpdate value)? unableToUpdate,
+    TResult Function(NoPendingCart value)? noPendingCart,
+    required TResult orElse(),
+  }) {
+    if (noPendingCart != null) {
+      return noPendingCart(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class NoPendingCart implements CartFailure {
+  const factory NoPendingCart() = _$NoPendingCart;
 }

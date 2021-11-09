@@ -7,4 +7,5 @@ class CartFailure with _$CartFailure {
   const factory CartFailure.unexpected() = Unexpected;
   const factory CartFailure.insufficientPermissions() = InsufficientPermissions;
   const factory CartFailure.unableToUpdate() = UnableToUpdate;
+  const factory CartFailure.noPendingCart() = NoPendingCart;
 }
