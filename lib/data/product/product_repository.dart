@@ -25,9 +25,9 @@ class ProductRepository implements IProductRepository {
 
       return right(products);
     } on FirebaseException catch (_) {
-      return left(ProductFailure.unexpected());
+      return left(const ProductFailure.unexpected());
     } on Exception catch (_) {
-      return left(ProductFailure.unexpected());
+      return left(const ProductFailure.unexpected());
     }
   }
 }

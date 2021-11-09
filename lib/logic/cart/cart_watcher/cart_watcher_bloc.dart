@@ -16,7 +16,7 @@ part 'cart_watcher_bloc.freezed.dart';
 class CartWatcherBloc extends Bloc<CartWatcherEvent, CartWatcherState> {
   final ICartRepository _repository;
 
-  CartWatcherBloc(this._repository) : super(CartWatcherState.loading()) {
+  CartWatcherBloc(this._repository) : super(const CartWatcherState.loading()) {
     on<CartWatcherEvent>((event, emit) {});
   }
 }

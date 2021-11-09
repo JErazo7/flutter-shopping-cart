@@ -12,7 +12,7 @@ part 'cart_history_bloc.freezed.dart';
 class CartHistoryBloc extends Bloc<CartHistoryEvent, CartHistoryState> {
   final ICartRepository _repository;
 
-  CartHistoryBloc(this._repository) : super(_Loading()) {
+  CartHistoryBloc(this._repository) : super(const _Loading()) {
     on<CartHistoryEvent>((event, emit) {
       // TODO: implement event handler
     });

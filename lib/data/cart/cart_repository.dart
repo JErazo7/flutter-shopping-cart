@@ -23,9 +23,9 @@ class CartRepository implements ICartRepository {
 
       return right(unit);
     } on FirebaseException catch (_) {
-      return left(CartFailure.unexpected());
+      return left(const CartFailure.unexpected());
     } on Exception catch (_) {
-      return left(CartFailure.unexpected());
+      return left(const CartFailure.unexpected());
     }
   }
 
@@ -38,9 +38,9 @@ class CartRepository implements ICartRepository {
 
       return right(unit);
     } on FirebaseException catch (_) {
-      return left(CartFailure.unexpected());
+      return left(const CartFailure.unexpected());
     } on Exception catch (_) {
-      return left(CartFailure.unexpected());
+      return left(const CartFailure.unexpected());
     }
   }
 
@@ -57,9 +57,9 @@ class CartRepository implements ICartRepository {
 
       return right(carts);
     } on FirebaseException catch (_) {
-      return left(CartFailure.unexpected());
+      return left(const CartFailure.unexpected());
     } on Exception catch (_) {
-      return left(CartFailure.unexpected());
+      return left(const CartFailure.unexpected());
     }
   }
 
@@ -76,9 +76,9 @@ class CartRepository implements ICartRepository {
         final cart = CartDto.fromJson(json).toDomain();
         return right<CartFailure, Cart>(cart);
       }
-      return left<CartFailure, Cart>(CartFailure.noPendingCart());
+      return left<CartFailure, Cart>(const CartFailure.noPendingCart());
     }).onErrorReturnWith((_, __) {
-      return left(CartFailure.unexpected());
+      return left(const CartFailure.unexpected());
     });
   }
 }

@@ -13,7 +13,7 @@ part 'product_bloc.freezed.dart';
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   final IProductRepository _repository;
 
-  ProductBloc(this._repository) : super(ProductState.loading()) {
+  ProductBloc(this._repository) : super(const ProductState.loading()) {
     on<ProductEvent>((event, emit) {});
   }
 }
