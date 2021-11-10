@@ -1,5 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:shopping_cart/domain/cart/product_cart.dart';
+import 'package:uuid/uuid.dart';
 
 part 'cart.freezed.dart';
 
@@ -15,7 +16,13 @@ class Cart with _$Cart {
   }) = _Cart;
 
   factory Cart.pending() {
-    return Cart(id: '1', status: CartStatus.pending, items: []);
+    const uuid = Uuid();
+
+    return Cart(
+      id: uuid.v1(),
+      status: CartStatus.pending,
+      items: [],
+    );
   }
 }
 

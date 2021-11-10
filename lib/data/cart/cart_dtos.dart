@@ -8,10 +8,12 @@ import 'package:shopping_cart/domain/cart/product_cart.dart';
 part 'cart_dtos.freezed.dart';
 part 'cart_dtos.g.dart';
 
-@freezed
+@Freezed()
 class CartDto with _$CartDto {
   const CartDto._();
 
+  // ignore: invalid_annotation_target
+  @JsonSerializable(explicitToJson: true)
   factory CartDto({
     required String id,
     required String status,
@@ -50,6 +52,7 @@ class ProductCartDto with _$ProductCartDto {
   factory ProductCartDto({
     required String productId,
     required String name,
+    required String image,
     required int quantity,
   }) = _ProductCartDto;
 
@@ -57,6 +60,7 @@ class ProductCartDto with _$ProductCartDto {
     return ProductCartDto(
       productId: productCart.productId,
       name: productCart.name,
+      image: productCart.image,
       quantity: productCart.quantity,
     );
   }
@@ -67,6 +71,7 @@ class ProductCartDto with _$ProductCartDto {
   ProductCart toDomain() {
     return ProductCart(
       productId: productId,
+      image: image,
       name: name,
       quantity: quantity,
     );

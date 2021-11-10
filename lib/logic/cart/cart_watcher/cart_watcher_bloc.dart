@@ -39,6 +39,7 @@ class CartWatcherBloc extends Bloc<CartWatcherEvent, CartWatcherState> {
         either.fold(
           (failure) async {
             if (failure is NoPendingCart) {
+              //If there is no a pending cart, it creates a new one
               final response = await _repository.createCart(Cart.pending());
               response.fold(
                 (createFailure) => emit(CartWatcherState.error(createFailure)),
@@ -51,10 +52,65 @@ class CartWatcherBloc extends Bloc<CartWatcherEvent, CartWatcherState> {
           (cart) => emit(CartWatcherState.data(cart)),
         );
       },
-      itemAdded: (item) {},
-      itemRemoved: (item) {},
-      itemQuantityUpdated: (productId, quantity) {},
+      itemAdded: (item) async {
+        final cart = (state as Data).cart;
+        final items = List<ProductCart>.from(cart.items);
+        final index =
+            items.indexWhere((element) => element.productId == item.productId);
+
+        //Update the quantity if the item already exits in the cart
+        if (index != -1) {
+          final currentItem = items.elementAt(index);
+          final newQuantity = item.quantity + currentItem.quantity;
+          items[index] = currentItem.copyWith(quantity: newQuantity);
+        } else {
+          items.add(item);
+        }
+        final updatedCart = cart.copyWith(items: items);
+
+        _repository.updateCart(updatedCart);
+        emit(CartWatcherState.data(updatedCart));
+      },
+      itemRemoved: (index) {
+        final cart = (state as Data).cart;
+        final items = List<ProductCart>.from(cart.items);
+        items.removeAt(index);
+
+        final updatedCart = cart.copyWith(items: items);
+
+        _repository.updateCart(updatedCart);
+        emit(CartWatcherState.data(updatedCart));
+      },
+      itemQuantityDecremented: (index) {
+        final cart = (state as Data).cart;
+        final items = List<ProductCart>.from(cart.items);
+        final item = items.elementAt(index);
+
+        if (item.quantity > 1) {
+          items[index] = item.copyWith(quantity: item.quantity - 1);
+
+          final updatedCart = cart.copyWith(items: items);
+          emit(CartWatcherState.data(updatedCart));
+        }
+      },
+      itemQuantityIncremented: (index) {
+        final cart = (state as Data).cart;
+        final items = List<ProductCart>.from(cart.items);
+        final item = items.elementAt(index);
+
+        items[index] = item.copyWith(quantity: item.quantity + 1);
+
+        final updatedCart = cart.copyWith(items: items);
+        emit(CartWatcherState.data(updatedCart));
+      },
+      checkout: () {
+        final cart = (state as Data).cart;
+        final completedCart = cart.copyWith(status: CartStatus.completed);
+
+        _repository.updateCart(completedCart);
+      },
     );
+
     return Future.value();
   }
 

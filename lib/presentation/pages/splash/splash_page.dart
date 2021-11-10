@@ -26,15 +26,16 @@ class SplashPage extends StatelessWidget {
             orElse: () {});
       },
       child: Scaffold(
-          body: Center(
-        child: Hero(
-          tag: 'tul',
-          child: Image.asset(
-            'assets/logos/logo-tul.png',
-            width: 140.w,
+        body: Center(
+          child: Hero(
+            tag: 'tul',
+            child: Image.asset(
+              'assets/logos/logo-tul.png',
+              width: 140.w,
+            ),
           ),
         ),
-      )),
+      ),
     );
   }
 }

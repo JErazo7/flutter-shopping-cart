@@ -1,8 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:shopping_cart/domain/cart/product_cart.dart';
 
 import 'package:shopping_cart/domain/product/product.dart';
+import 'package:shopping_cart/logic/cart/cart_watcher/cart_watcher_bloc.dart';
 import 'package:shopping_cart/presentation/core/widgets/cart_stepper.dart';
 import 'package:shopping_cart/presentation/core/widgets/tul_button.dart';
 
@@ -76,7 +80,10 @@ class ProductInfoPage extends StatelessWidget {
             ),
           ),
           SizedBox(height: 26.h),
-          const SafeArea(child: BottomOptions()),
+          SafeArea(
+              child: BottomOptions(
+            product: product,
+          )),
         ],
       ),
     );
@@ -84,7 +91,11 @@ class ProductInfoPage extends StatelessWidget {
 }
 
 class BottomOptions extends StatefulWidget {
-  const BottomOptions({Key? key}) : super(key: key);
+  final Product product;
+  const BottomOptions({
+    Key? key,
+    required this.product,
+  }) : super(key: key);
 
   @override
   _BottomOptionsState createState() => _BottomOptionsState();
@@ -113,6 +124,14 @@ class _BottomOptionsState extends State<BottomOptions> {
           child: TulButton(
             child: const Text('Add to cart'),
             onPressed: () {
+              context.read<CartWatcherBloc>().add(
+                    CartWatcherEvent.itemAdded(
+                      ProductCart.fromProduct(
+                        quantity: amount,
+                        product: widget.product,
+                      ),
+                    ),
+                  );
               AutoRouter.of(context).pop();
             },
           ),

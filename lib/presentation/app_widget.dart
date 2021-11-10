@@ -13,6 +13,7 @@ class AppWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final lightTheme = ThemeData.light();
     return ScreenUtilInit(
       designSize: const Size(360, 690),
       builder: () => BlocProvider(
@@ -20,13 +21,13 @@ class AppWidget extends StatelessWidget {
           ..add(const CartWatcherEvent.watchStarted()),
         child: MaterialApp.router(
           title: 'Shopping Cart',
-          theme: ThemeData.light().copyWith(
-            appBarTheme: ThemeData.light().appBarTheme.copyWith(
-                  brightness: Brightness.dark,
-                  color: const Color(0xFFD8D7DB),
-                  iconTheme: ThemeData.light().iconTheme,
-                  elevation: 0,
-                ),
+          theme: lightTheme.copyWith(
+            appBarTheme: lightTheme.appBarTheme.copyWith(
+              brightness: Brightness.dark,
+              color: const Color(0xFFD8D7DB),
+              iconTheme: lightTheme.iconTheme,
+              elevation: 0,
+            ),
             iconTheme: ThemeData.light().iconTheme.copyWith(size: 24.r),
             primaryColor: const Color(0xFF131410),
             scaffoldBackgroundColor: const Color(0xFFD8D7DB),

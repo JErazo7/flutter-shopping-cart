@@ -18,8 +18,8 @@ class CartRepository implements ICartRepository {
   Future<Either<CartFailure, Unit>> createCart(Cart cart) async {
     try {
       final json = CartDto.fromDomain(cart).toJson();
-      final reference = _firestore.collection('carts');
-      await reference.add(json);
+      final reference = _firestore.collection('carts').doc(cart.id);
+      await reference.set(json);
 
       return right(unit);
     } on FirebaseException catch (_) {

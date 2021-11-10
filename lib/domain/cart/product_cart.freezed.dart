@@ -20,10 +20,12 @@ class _$ProductCartTearOff {
   _ProductCart call(
       {required String productId,
       required String name,
+      required String image,
       required int quantity}) {
     return _ProductCart(
       productId: productId,
       name: name,
+      image: image,
       quantity: quantity,
     );
   }
@@ -36,6 +38,7 @@ const $ProductCart = _$ProductCartTearOff();
 mixin _$ProductCart {
   String get productId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   int get quantity => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
@@ -48,7 +51,7 @@ abstract class $ProductCartCopyWith<$Res> {
   factory $ProductCartCopyWith(
           ProductCart value, $Res Function(ProductCart) then) =
       _$ProductCartCopyWithImpl<$Res>;
-  $Res call({String productId, String name, int quantity});
+  $Res call({String productId, String name, String image, int quantity});
 }
 
 /// @nodoc
@@ -63,6 +66,7 @@ class _$ProductCartCopyWithImpl<$Res> implements $ProductCartCopyWith<$Res> {
   $Res call({
     Object? productId = freezed,
     Object? name = freezed,
+    Object? image = freezed,
     Object? quantity = freezed,
   }) {
     return _then(_value.copyWith(
@@ -73,6 +77,10 @@ class _$ProductCartCopyWithImpl<$Res> implements $ProductCartCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       quantity: quantity == freezed
           ? _value.quantity
@@ -89,7 +97,7 @@ abstract class _$ProductCartCopyWith<$Res>
           _ProductCart value, $Res Function(_ProductCart) then) =
       __$ProductCartCopyWithImpl<$Res>;
   @override
-  $Res call({String productId, String name, int quantity});
+  $Res call({String productId, String name, String image, int quantity});
 }
 
 /// @nodoc
@@ -106,6 +114,7 @@ class __$ProductCartCopyWithImpl<$Res> extends _$ProductCartCopyWithImpl<$Res>
   $Res call({
     Object? productId = freezed,
     Object? name = freezed,
+    Object? image = freezed,
     Object? quantity = freezed,
   }) {
     return _then(_ProductCart(
@@ -116,6 +125,10 @@ class __$ProductCartCopyWithImpl<$Res> extends _$ProductCartCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       quantity: quantity == freezed
           ? _value.quantity
@@ -129,18 +142,23 @@ class __$ProductCartCopyWithImpl<$Res> extends _$ProductCartCopyWithImpl<$Res>
 
 class _$_ProductCart implements _ProductCart {
   _$_ProductCart(
-      {required this.productId, required this.name, required this.quantity});
+      {required this.productId,
+      required this.name,
+      required this.image,
+      required this.quantity});
 
   @override
   final String productId;
   @override
   final String name;
   @override
+  final String image;
+  @override
   final int quantity;
 
   @override
   String toString() {
-    return 'ProductCart(productId: $productId, name: $name, quantity: $quantity)';
+    return 'ProductCart(productId: $productId, name: $name, image: $image, quantity: $quantity)';
   }
 
   @override
@@ -151,12 +169,14 @@ class _$_ProductCart implements _ProductCart {
             (identical(other.productId, productId) ||
                 other.productId == productId) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.quantity, quantity) ||
                 other.quantity == quantity));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, productId, name, quantity);
+  int get hashCode =>
+      Object.hash(runtimeType, productId, name, image, quantity);
 
   @JsonKey(ignore: true)
   @override
@@ -168,12 +188,15 @@ abstract class _ProductCart implements ProductCart {
   factory _ProductCart(
       {required String productId,
       required String name,
+      required String image,
       required int quantity}) = _$_ProductCart;
 
   @override
   String get productId;
   @override
   String get name;
+  @override
+  String get image;
   @override
   int get quantity;
   @override

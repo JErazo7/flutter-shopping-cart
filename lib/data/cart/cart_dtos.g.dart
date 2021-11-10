@@ -18,13 +18,14 @@ Map<String, dynamic> _$$_CartDtoToJson(_$_CartDto instance) =>
     <String, dynamic>{
       'id': instance.id,
       'status': instance.status,
-      'items': instance.items,
+      'items': instance.items.map((e) => e.toJson()).toList(),
     };
 
 _$_ProductCartDto _$$_ProductCartDtoFromJson(Map<String, dynamic> json) =>
     _$_ProductCartDto(
       productId: json['productId'] as String,
       name: json['name'] as String,
+      image: json['image'] as String,
       quantity: json['quantity'] as int,
     );
 
@@ -32,5 +33,6 @@ Map<String, dynamic> _$$_ProductCartDtoToJson(_$_ProductCartDto instance) =>
     <String, dynamic>{
       'productId': instance.productId,
       'name': instance.name,
+      'image': instance.image,
       'quantity': instance.quantity,
     };
