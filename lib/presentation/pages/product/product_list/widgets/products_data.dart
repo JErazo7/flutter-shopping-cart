@@ -67,12 +67,14 @@ class ProductCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Center(
-                child: Hero(
-                  tag: title,
-                  child: Image.asset(
-                    image,
-                    height: 120.h,
+              Expanded(
+                child: Center(
+                  child: Hero(
+                    tag: title,
+                    child: Image.asset(
+                      image,
+                      height: 120.h,
+                    ),
                   ),
                 ),
               ),

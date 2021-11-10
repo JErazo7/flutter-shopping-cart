@@ -90,7 +90,7 @@ class BottomBar extends StatelessWidget {
             tag: 'tul',
             child: Image.asset(
               'assets/logos/logo-tul.png',
-              width: 80.w,
+              height: 25.h,
             ),
           ),
           const Spacer(),
