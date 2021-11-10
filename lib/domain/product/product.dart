@@ -8,6 +8,7 @@ class Product with _$Product {
     /// A unique identifier
     required String id,
     required String name,
+    required String image,
 
     /// A stock-keeping unit
     required String sku,

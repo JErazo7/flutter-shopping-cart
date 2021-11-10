@@ -20,11 +20,13 @@ class _$ProductTearOff {
   _Product call(
       {required String id,
       required String name,
+      required String image,
       required String sku,
       required String description}) {
     return _Product(
       id: id,
       name: name,
+      image: image,
       sku: sku,
       description: description,
     );
@@ -39,6 +41,7 @@ mixin _$Product {
   /// A unique identifier
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
 
   /// A stock-keeping unit
   String get sku => throw _privateConstructorUsedError;
@@ -52,7 +55,8 @@ mixin _$Product {
 abstract class $ProductCopyWith<$Res> {
   factory $ProductCopyWith(Product value, $Res Function(Product) then) =
       _$ProductCopyWithImpl<$Res>;
-  $Res call({String id, String name, String sku, String description});
+  $Res call(
+      {String id, String name, String image, String sku, String description});
 }
 
 /// @nodoc
@@ -67,6 +71,7 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? image = freezed,
     Object? sku = freezed,
     Object? description = freezed,
   }) {
@@ -78,6 +83,10 @@ class _$ProductCopyWithImpl<$Res> implements $ProductCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       sku: sku == freezed
           ? _value.sku
@@ -96,7 +105,8 @@ abstract class _$ProductCopyWith<$Res> implements $ProductCopyWith<$Res> {
   factory _$ProductCopyWith(_Product value, $Res Function(_Product) then) =
       __$ProductCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name, String sku, String description});
+  $Res call(
+      {String id, String name, String image, String sku, String description});
 }
 
 /// @nodoc
@@ -112,6 +122,7 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? image = freezed,
     Object? sku = freezed,
     Object? description = freezed,
   }) {
@@ -123,6 +134,10 @@ class __$ProductCopyWithImpl<$Res> extends _$ProductCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       sku: sku == freezed
           ? _value.sku
@@ -142,6 +157,7 @@ class _$_Product implements _Product {
   _$_Product(
       {required this.id,
       required this.name,
+      required this.image,
       required this.sku,
       required this.description});
 
@@ -152,6 +168,8 @@ class _$_Product implements _Product {
   @override
   final String name;
   @override
+  final String image;
+  @override
 
   /// A stock-keeping unit
   final String sku;
@@ -160,7 +178,7 @@ class _$_Product implements _Product {
 
   @override
   String toString() {
-    return 'Product(id: $id, name: $name, sku: $sku, description: $description)';
+    return 'Product(id: $id, name: $name, image: $image, sku: $sku, description: $description)';
   }
 
   @override
@@ -170,13 +188,15 @@ class _$_Product implements _Product {
             other is _Product &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.sku, sku) || other.sku == sku) &&
             (identical(other.description, description) ||
                 other.description == description));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, sku, description);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, image, sku, description);
 
   @JsonKey(ignore: true)
   @override
@@ -188,6 +208,7 @@ abstract class _Product implements Product {
   factory _Product(
       {required String id,
       required String name,
+      required String image,
       required String sku,
       required String description}) = _$_Product;
 
@@ -197,6 +218,8 @@ abstract class _Product implements Product {
   String get id;
   @override
   String get name;
+  @override
+  String get image;
   @override
 
   /// A stock-keeping unit

@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:shopping_cart/domain/product/product.dart';
+import 'package:shopping_cart/presentation/core/widgets/cart_stepper.dart';
+import 'package:shopping_cart/presentation/core/widgets/tul_button.dart';
 
 class ProductInfoPage extends StatelessWidget {
   final Product product;
@@ -18,146 +20,112 @@ class ProductInfoPage extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children: [
-          Center(
-            child: SizedBox(
-              height: 300.h,
-              child: Hero(
-                tag: 3,
-                child: Image.asset(
-                  'assets/images/hammer.png',
-                  fit: BoxFit.fill,
-                ),
-              ),
+          _heroImage(),
+          _description(context),
+        ],
+      ),
+    );
+  }
+
+  Widget _heroImage() {
+    return Flexible(
+      child: Center(
+        child: SizedBox(
+          height: 300.h,
+          child: Hero(
+            tag: product.name,
+            child: Image.asset(
+              product.image,
+              fit: BoxFit.fill,
             ),
           ),
-          const Spacer(),
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(23),
-              ),
-            ),
+        ),
+      ),
+    );
+  }
+
+  Widget _description(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(16.r),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.vertical(
+          top: Radius.circular(25.r),
+        ),
+      ),
+      child: Column(
+        children: [
+          SizedBox(height: 12.h),
+          Padding(
+            padding: EdgeInsets.all(8.r),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Titulo',
-                        style: Theme.of(context).textTheme.headline6,
-                      ),
-                      const SizedBox(
-                        height: 16,
-                      ),
-                      Text(
-                        'Descripcion un poco larga asdasd asdasd  asdasd asdasd',
-                        style: Theme.of(context).textTheme.bodyText2,
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                    ],
-                  ),
+                Text(
+                  product.name,
+                  style: Theme.of(context).textTheme.headline6,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                const SizedBox(
-                  height: 32,
-                ),
-                SafeArea(
-                  child: TulButton(
-                    width: double.infinity,
-                    child: const Text('Add to cart'),
-                    onPressed: () {
-                      AutoRouter.of(context).pop();
-                    },
-                  ),
+                SizedBox(height: 12.h),
+                Text(
+                  product.description,
+                  style: Theme.of(context).textTheme.bodyText2,
                 ),
               ],
             ),
-          )
+          ),
+          SizedBox(height: 26.h),
+          const SafeArea(child: BottomOptions()),
         ],
       ),
     );
   }
 }
 
-class TulButton extends StatelessWidget {
-  final VoidCallback? onPressed;
-  final Widget? child;
-  final double? width;
-  final Color? color;
-  final Color? textColor;
-  final bool enabled;
-  final bool loading;
-
-  const TulButton({
-    Key? key,
-    required this.onPressed,
-    required this.child,
-    this.width,
-    this.color,
-    this.textColor,
-    this.enabled = true,
-    this.loading = false,
-  }) : super(key: key);
+class BottomOptions extends StatefulWidget {
+  const BottomOptions({Key? key}) : super(key: key);
 
   @override
+  _BottomOptionsState createState() => _BottomOptionsState();
+}
+
+class _BottomOptionsState extends State<BottomOptions> {
+  int amount = 1;
+  @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: width,
-      height: 40.h,
-      child: TextButton(
-        onPressed: enabled && !loading ? onPressed : null,
-        style: _getButtonStyle(context),
-        child: _buildChild(context)!,
-      ),
-    );
-  }
-
-  ButtonStyle _getButtonStyle(BuildContext context) {
-    return ButtonStyle(
-      backgroundColor: MaterialStateProperty.all(
-        color ?? Theme.of(context).primaryColor,
-      ),
-      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(25.0),
-      )),
-      overlayColor: MaterialStateProperty.all(_getTextColor().withOpacity(.2)),
-      foregroundColor: MaterialStateProperty.resolveWith((states) {
-        if (states.contains(MaterialState.disabled)) {
-          return _getTextColor().withOpacity(.5);
-        }
-
-        return _getTextColor();
-      }),
-    );
-  }
-
-  Color _getTextColor() {
-    return textColor ?? Colors.white;
-  }
-
-  Widget? _buildChild(BuildContext context) {
-    if (loading) {
-      return Theme(
-        data: ThemeData(
-          brightness: Brightness.dark,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        CartStepper(
+          amount: amount,
+          increment: () {
+            _setAmount(amount + 1);
+          },
+          decrement: () {
+            _setAmount(amount - 1);
+          },
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: CircularProgressIndicator.adaptive(
-              valueColor:
-                  AlwaysStoppedAnimation<Color>(textColor ?? Colors.white),
-            ),
+        SizedBox(
+          width: 14.w,
+        ),
+        Expanded(
+          child: TulButton(
+            child: const Text('Add to cart'),
+            onPressed: () {
+              AutoRouter.of(context).pop();
+            },
           ),
         ),
-      );
-    }
+      ],
+    );
+  }
 
-    return child;
+  void _setAmount(int newAmount) {
+    if (newAmount > 0) {
+      setState(() {
+        amount = newAmount;
+      });
+    }
   }
 }

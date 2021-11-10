@@ -904,9 +904,9 @@ class _$CartWatcherStateTearOff {
     return const Loading();
   }
 
-  Data data(List<Cart> carts) {
+  Data data(Cart cart) {
     return Data(
-      carts,
+      cart,
     );
   }
 
@@ -925,21 +925,21 @@ mixin _$CartWatcherState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Cart> carts) data,
+    required TResult Function(Cart cart) data,
     required TResult Function(CartFailure failure) error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Cart> carts)? data,
+    TResult Function(Cart cart)? data,
     TResult Function(CartFailure failure)? error,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Cart> carts)? data,
+    TResult Function(Cart cart)? data,
     TResult Function(CartFailure failure)? error,
     required TResult orElse(),
   }) =>
@@ -1024,7 +1024,7 @@ class _$Loading implements Loading {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Cart> carts) data,
+    required TResult Function(Cart cart) data,
     required TResult Function(CartFailure failure) error,
   }) {
     return loading();
@@ -1034,7 +1034,7 @@ class _$Loading implements Loading {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Cart> carts)? data,
+    TResult Function(Cart cart)? data,
     TResult Function(CartFailure failure)? error,
   }) {
     return loading?.call();
@@ -1044,7 +1044,7 @@ class _$Loading implements Loading {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Cart> carts)? data,
+    TResult Function(Cart cart)? data,
     TResult Function(CartFailure failure)? error,
     required TResult orElse(),
   }) {
@@ -1097,7 +1097,9 @@ abstract class Loading implements CartWatcherState {
 abstract class $DataCopyWith<$Res> {
   factory $DataCopyWith(Data value, $Res Function(Data) then) =
       _$DataCopyWithImpl<$Res>;
-  $Res call({List<Cart> carts});
+  $Res call({Cart cart});
+
+  $CartCopyWith<$Res> get cart;
 }
 
 /// @nodoc
@@ -1111,28 +1113,35 @@ class _$DataCopyWithImpl<$Res> extends _$CartWatcherStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object? carts = freezed,
+    Object? cart = freezed,
   }) {
     return _then(Data(
-      carts == freezed
-          ? _value.carts
-          : carts // ignore: cast_nullable_to_non_nullable
-              as List<Cart>,
+      cart == freezed
+          ? _value.cart
+          : cart // ignore: cast_nullable_to_non_nullable
+              as Cart,
     ));
+  }
+
+  @override
+  $CartCopyWith<$Res> get cart {
+    return $CartCopyWith<$Res>(_value.cart, (value) {
+      return _then(_value.copyWith(cart: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$Data implements Data {
-  const _$Data(this.carts);
+  const _$Data(this.cart);
 
   @override
-  final List<Cart> carts;
+  final Cart cart;
 
   @override
   String toString() {
-    return 'CartWatcherState.data(carts: $carts)';
+    return 'CartWatcherState.data(cart: $cart)';
   }
 
   @override
@@ -1140,12 +1149,11 @@ class _$Data implements Data {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is Data &&
-            const DeepCollectionEquality().equals(other.carts, carts));
+            (identical(other.cart, cart) || other.cart == cart));
   }
 
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(carts));
+  int get hashCode => Object.hash(runtimeType, cart);
 
   @JsonKey(ignore: true)
   @override
@@ -1156,32 +1164,32 @@ class _$Data implements Data {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Cart> carts) data,
+    required TResult Function(Cart cart) data,
     required TResult Function(CartFailure failure) error,
   }) {
-    return data(carts);
+    return data(cart);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Cart> carts)? data,
+    TResult Function(Cart cart)? data,
     TResult Function(CartFailure failure)? error,
   }) {
-    return data?.call(carts);
+    return data?.call(cart);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Cart> carts)? data,
+    TResult Function(Cart cart)? data,
     TResult Function(CartFailure failure)? error,
     required TResult orElse(),
   }) {
     if (data != null) {
-      return data(carts);
+      return data(cart);
     }
     return orElse();
   }
@@ -1222,9 +1230,9 @@ class _$Data implements Data {
 }
 
 abstract class Data implements CartWatcherState {
-  const factory Data(List<Cart> carts) = _$Data;
+  const factory Data(Cart cart) = _$Data;
 
-  List<Cart> get carts;
+  Cart get cart;
   @JsonKey(ignore: true)
   $DataCopyWith<Data> get copyWith => throw _privateConstructorUsedError;
 }
@@ -1300,7 +1308,7 @@ class _$Error implements Error {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() loading,
-    required TResult Function(List<Cart> carts) data,
+    required TResult Function(Cart cart) data,
     required TResult Function(CartFailure failure) error,
   }) {
     return error(failure);
@@ -1310,7 +1318,7 @@ class _$Error implements Error {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Cart> carts)? data,
+    TResult Function(Cart cart)? data,
     TResult Function(CartFailure failure)? error,
   }) {
     return error?.call(failure);
@@ -1320,7 +1328,7 @@ class _$Error implements Error {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? loading,
-    TResult Function(List<Cart> carts)? data,
+    TResult Function(Cart cart)? data,
     TResult Function(CartFailure failure)? error,
     required TResult orElse(),
   }) {

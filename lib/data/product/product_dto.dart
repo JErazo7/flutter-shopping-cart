@@ -11,6 +11,7 @@ class ProductDto with _$ProductDto {
   factory ProductDto({
     required String id,
     required String name,
+    required String image,
     required String sku,
     required String description,
   }) = _ProductDto;
@@ -22,6 +23,7 @@ class ProductDto with _$ProductDto {
     return Product(
       id: id,
       name: name,
+      image: image,
       sku: sku,
       description: description,
     );

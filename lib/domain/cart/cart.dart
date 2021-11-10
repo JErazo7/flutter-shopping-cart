@@ -13,6 +13,10 @@ class Cart with _$Cart {
     required CartStatus status,
     required List<ProductCart> items,
   }) = _Cart;
+
+  factory Cart.pending() {
+    return Cart(id: '1', status: CartStatus.pending, items: []);
+  }
 }
 
 enum CartStatus {

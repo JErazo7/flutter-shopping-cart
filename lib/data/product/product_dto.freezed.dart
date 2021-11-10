@@ -24,11 +24,13 @@ class _$ProductDtoTearOff {
   _ProductDto call(
       {required String id,
       required String name,
+      required String image,
       required String sku,
       required String description}) {
     return _ProductDto(
       id: id,
       name: name,
+      image: image,
       sku: sku,
       description: description,
     );
@@ -46,6 +48,7 @@ const $ProductDto = _$ProductDtoTearOff();
 mixin _$ProductDto {
   String get id => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
+  String get image => throw _privateConstructorUsedError;
   String get sku => throw _privateConstructorUsedError;
   String get description => throw _privateConstructorUsedError;
 
@@ -60,7 +63,8 @@ abstract class $ProductDtoCopyWith<$Res> {
   factory $ProductDtoCopyWith(
           ProductDto value, $Res Function(ProductDto) then) =
       _$ProductDtoCopyWithImpl<$Res>;
-  $Res call({String id, String name, String sku, String description});
+  $Res call(
+      {String id, String name, String image, String sku, String description});
 }
 
 /// @nodoc
@@ -75,6 +79,7 @@ class _$ProductDtoCopyWithImpl<$Res> implements $ProductDtoCopyWith<$Res> {
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? image = freezed,
     Object? sku = freezed,
     Object? description = freezed,
   }) {
@@ -86,6 +91,10 @@ class _$ProductDtoCopyWithImpl<$Res> implements $ProductDtoCopyWith<$Res> {
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       sku: sku == freezed
           ? _value.sku
@@ -105,7 +114,8 @@ abstract class _$ProductDtoCopyWith<$Res> implements $ProductDtoCopyWith<$Res> {
           _ProductDto value, $Res Function(_ProductDto) then) =
       __$ProductDtoCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name, String sku, String description});
+  $Res call(
+      {String id, String name, String image, String sku, String description});
 }
 
 /// @nodoc
@@ -122,6 +132,7 @@ class __$ProductDtoCopyWithImpl<$Res> extends _$ProductDtoCopyWithImpl<$Res>
   $Res call({
     Object? id = freezed,
     Object? name = freezed,
+    Object? image = freezed,
     Object? sku = freezed,
     Object? description = freezed,
   }) {
@@ -133,6 +144,10 @@ class __$ProductDtoCopyWithImpl<$Res> extends _$ProductDtoCopyWithImpl<$Res>
       name: name == freezed
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String,
+      image: image == freezed
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
               as String,
       sku: sku == freezed
           ? _value.sku
@@ -152,6 +167,7 @@ class _$_ProductDto extends _ProductDto {
   _$_ProductDto(
       {required this.id,
       required this.name,
+      required this.image,
       required this.sku,
       required this.description})
       : super._();
@@ -164,13 +180,15 @@ class _$_ProductDto extends _ProductDto {
   @override
   final String name;
   @override
+  final String image;
+  @override
   final String sku;
   @override
   final String description;
 
   @override
   String toString() {
-    return 'ProductDto(id: $id, name: $name, sku: $sku, description: $description)';
+    return 'ProductDto(id: $id, name: $name, image: $image, sku: $sku, description: $description)';
   }
 
   @override
@@ -180,13 +198,15 @@ class _$_ProductDto extends _ProductDto {
             other is _ProductDto &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.image, image) || other.image == image) &&
             (identical(other.sku, sku) || other.sku == sku) &&
             (identical(other.description, description) ||
                 other.description == description));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, sku, description);
+  int get hashCode =>
+      Object.hash(runtimeType, id, name, image, sku, description);
 
   @JsonKey(ignore: true)
   @override
@@ -203,6 +223,7 @@ abstract class _ProductDto extends ProductDto {
   factory _ProductDto(
       {required String id,
       required String name,
+      required String image,
       required String sku,
       required String description}) = _$_ProductDto;
   _ProductDto._() : super._();
@@ -214,6 +235,8 @@ abstract class _ProductDto extends ProductDto {
   String get id;
   @override
   String get name;
+  @override
+  String get image;
   @override
   String get sku;
   @override
