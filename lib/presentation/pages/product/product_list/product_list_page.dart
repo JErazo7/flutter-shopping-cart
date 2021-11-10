@@ -103,15 +103,6 @@ class BottomBar extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          IconButton(
-            onPressed: () {
-              AutoRouter.of(context).push(const CartHistoryRoute());
-            },
-            icon: const Icon(
-              Icons.receipt_long,
-              color: Colors.white,
-            ),
-          )
         ],
       ),
     );

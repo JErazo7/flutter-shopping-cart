@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:injectable/injectable.dart';
-import 'package:rxdart/rxdart.dart';
 
 import 'package:shopping_cart/data/cart/cart_dtos.dart';
 import 'package:shopping_cart/domain/cart/cart_failure.dart';
@@ -64,21 +63,34 @@ class CartRepository implements ICartRepository {
   }
 
   @override
-  Stream<Either<CartFailure, Cart>> watchPendingCart() async* {
-    final reference = _firestore
-        .collection('carts')
-        .where('status', isEqualTo: 'pending')
-        .limit(1);
+  Future<Either<CartFailure, Option<Cart>>> getPendingCart() async {
+    try {
+      final reference = _firestore
+          .collection('carts')
+          .where('status', isEqualTo: 'pending')
+          .limit(1);
+      final querySnapshot = await reference.get();
 
-    yield* reference.snapshots().map((e) {
-      if (e.docs.isNotEmpty) {
-        final json = e.docs.first.data();
-        final cart = CartDto.fromJson(json).toDomain();
-        return right<CartFailure, Cart>(cart);
+      if (querySnapshot.docs.isEmpty) {
+        return right(none());
       }
-      return left<CartFailure, Cart>(const CartFailure.noPendingCart());
-    }).onErrorReturnWith((_, __) {
+      final json = querySnapshot.docs.first.data();
+      return right(optionOf(CartDto.fromJson(json).toDomain()));
+    } on FirebaseException catch (_) {
       return left(const CartFailure.unexpected());
-    });
+    } on Exception catch (_) {
+      return left(const CartFailure.unexpected());
+    }
+
+    // yield* reference.snapshots().map((e) {
+    //   if (e.docs.isNotEmpty) {
+    //     final json = e.docs.first.data();
+    //     final cart = CartDto.fromJson(json).toDomain();
+    //     return right<CartFailure, Cart>(cart);
+    //   }
+    //   return left<CartFailure, Cart>(const CartFailure.noPendingCart());
+    // }).onErrorReturnWith((_, __) {
+    //   return left(const CartFailure.unexpected());
+    // });
   }
 }

@@ -6,7 +6,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopping_cart/domain/cart/product_cart.dart';
 
 import 'package:shopping_cart/domain/product/product.dart';
-import 'package:shopping_cart/logic/cart/cart_watcher/cart_watcher_bloc.dart';
+import 'package:shopping_cart/logic/cart/cart_form/cart_form_bloc.dart';
+import 'package:shopping_cart/presentation/core/utils/alerts.dart';
 import 'package:shopping_cart/presentation/core/widgets/cart_stepper.dart';
 import 'package:shopping_cart/presentation/core/widgets/tul_button.dart';
 
@@ -22,11 +23,27 @@ class ProductInfoPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Column(
-        children: [
-          _heroImage(),
-          _description(context),
-        ],
+      body: BlocListener<CartFormBloc, CartFormState>(
+        listener: (context, state) {
+          state.saveFailureOrSuccess.fold(
+            () {},
+            (either) => either.fold(
+              (failure) {
+                showSnackBarError(context, 'Unexpected');
+              },
+              (_) {
+                showSnackBarSuccess(context, 'Product added to cart');
+                AutoRouter.of(context).pop();
+              },
+            ),
+          );
+        },
+        child: Column(
+          children: [
+            _heroImage(),
+            _description(context),
+          ],
+        ),
       ),
     );
   }
@@ -121,18 +138,22 @@ class _BottomOptionsState extends State<BottomOptions> {
           width: 14.w,
         ),
         Expanded(
-          child: TulButton(
-            child: const Text('Add to cart'),
-            onPressed: () {
-              context.read<CartWatcherBloc>().add(
-                    CartWatcherEvent.itemAdded(
-                      ProductCart.fromProduct(
-                        quantity: amount,
-                        product: widget.product,
-                      ),
-                    ),
-                  );
-              AutoRouter.of(context).pop();
+          child: BlocBuilder<CartFormBloc, CartFormState>(
+            builder: (context, state) {
+              return TulButton(
+                loading: state.isSaving,
+                child: const Text('Add to cart'),
+                onPressed: () {
+                  context.read<CartFormBloc>().add(
+                        CartFormEvent.itemAdded(
+                          ProductCart.fromProduct(
+                            quantity: amount,
+                            product: widget.product,
+                          ),
+                        ),
+                      );
+                },
+              );
             },
           ),
         ),

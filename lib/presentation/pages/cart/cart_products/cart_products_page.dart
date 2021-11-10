@@ -1,10 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:shopping_cart/domain/cart/cart.dart';
 
 import 'package:shopping_cart/domain/cart/product_cart.dart';
-import 'package:shopping_cart/logic/cart/cart_watcher/cart_watcher_bloc.dart';
+import 'package:shopping_cart/logic/cart/cart_form/cart_form_bloc.dart';
+import 'package:shopping_cart/presentation/core/utils/alerts.dart';
 import 'package:shopping_cart/presentation/core/widgets/outline_cart_stepper.dart';
 import 'package:shopping_cart/presentation/core/widgets/tul_button.dart';
 
@@ -24,23 +26,29 @@ class CartProductsPage extends StatelessWidget {
         padding: EdgeInsets.all(16.r).subtract(
           EdgeInsets.only(top: 16.r),
         ),
-        child: BlocBuilder<CartWatcherBloc, CartWatcherState>(
+        child: BlocConsumer<CartFormBloc, CartFormState>(
+          listener: (context, state) {
+            if (state.cart.status == CartStatus.completed) {
+              context.read<CartFormBloc>().add(const CartFormEvent.reseted());
+              showSnackBarSuccess(context, 'Order completed');
+              AutoRouter.of(context).pop();
+            }
+            state.saveFailureOrSuccess.fold(
+              () {},
+              (either) {
+                either.fold((l) {
+                  showSnackBarError(context, 'Unexpected');
+                }, (_) {});
+              },
+            );
+          },
           builder: (context, state) {
-            return state.when(
-              loading: () {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              },
-              data: (cart) {
-                if (cart.items.isEmpty) {
-                  return const EmptyCart();
-                }
-                return ProductCartListData(cart: cart);
-              },
-              error: (failure) {
-                return Container();
-              },
+            if (state.cart.items.isEmpty) {
+              return const EmptyCart();
+            }
+            return ProductCartListData(
+              cart: state.cart,
+              isSaving: state.isSaving,
             );
           },
         ),
@@ -51,10 +59,12 @@ class CartProductsPage extends StatelessWidget {
 
 class ProductCartListData extends StatelessWidget {
   final Cart cart;
+  final bool isSaving;
 
   const ProductCartListData({
     Key? key,
     required this.cart,
+    required this.isSaving,
   }) : super(key: key);
 
   @override
@@ -71,18 +81,18 @@ class ProductCartListData extends StatelessWidget {
                 productCart: item,
                 onIncrement: () {
                   context
-                      .read<CartWatcherBloc>()
-                      .add(CartWatcherEvent.itemQuantityIncremented(index));
+                      .read<CartFormBloc>()
+                      .add(CartFormEvent.itemQuantityIncremented(index));
                 },
                 onDecrement: () {
                   context
-                      .read<CartWatcherBloc>()
-                      .add(CartWatcherEvent.itemQuantityDecremented(index));
+                      .read<CartFormBloc>()
+                      .add(CartFormEvent.itemQuantityDecremented(index));
                 },
                 onDelete: () {
                   context
-                      .read<CartWatcherBloc>()
-                      .add(CartWatcherEvent.itemRemoved(index));
+                      .read<CartFormBloc>()
+                      .add(CartFormEvent.itemRemoved(index));
                 },
               );
             },
@@ -91,10 +101,9 @@ class ProductCartListData extends StatelessWidget {
         SafeArea(
           child: TulButton(
             width: double.infinity,
+            loading: isSaving,
             onPressed: () {
-              context
-                  .read<CartWatcherBloc>()
-                  .add(const CartWatcherEvent.checkout());
+              context.read<CartFormBloc>().add(const CartFormEvent.checkout());
             },
             child: const Text('Proceed to checkout'),
           ),
@@ -135,7 +144,7 @@ class ProductCartItem extends StatelessWidget {
           child: Row(
             children: [
               Image.asset(
-                'assets/images/hammer.png',
+                productCart.image,
                 height: 60.w,
                 width: 60.w,
               ),

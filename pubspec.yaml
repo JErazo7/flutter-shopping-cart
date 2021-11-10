@@ -34,7 +34,6 @@ dependencies:
   get_it: ^7.2.0
   injectable: ^1.5.0
   json_annotation: ^4.3.0
-  rxdart: ^0.27.2
   uuid: ^3.0.5
 
 dev_dependencies:

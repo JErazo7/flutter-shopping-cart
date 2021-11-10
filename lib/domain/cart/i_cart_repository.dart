@@ -5,7 +5,7 @@ import 'cart.dart';
 
 abstract class ICartRepository {
   Future<Either<CartFailure, List<Cart>>> getCarts();
-  Stream<Either<CartFailure, Cart>> watchPendingCart();
+  Future<Either<CartFailure, Option<Cart>>> getPendingCart();
   Future<Either<CartFailure, Unit>> createCart(Cart cart);
   Future<Either<CartFailure, Unit>> updateCart(Cart cart);
 }

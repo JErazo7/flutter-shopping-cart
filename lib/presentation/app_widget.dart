@@ -3,7 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:shopping_cart/injection.dart';
-import 'package:shopping_cart/logic/cart/cart_watcher/cart_watcher_bloc.dart';
+import 'package:shopping_cart/logic/cart/cart_form/cart_form_bloc.dart';
+import 'package:shopping_cart/logic/cart/pending_cart/pending_cart_bloc.dart';
 import 'routes/router.gr.dart';
 
 class AppWidget extends StatelessWidget {
@@ -16,9 +17,16 @@ class AppWidget extends StatelessWidget {
     final lightTheme = ThemeData.light();
     return ScreenUtilInit(
       designSize: const Size(360, 690),
-      builder: () => BlocProvider(
-        create: (context) => getIt<CartWatcherBloc>()
-          ..add(const CartWatcherEvent.watchStarted()),
+      builder: () => MultiBlocProvider(
+        providers: [
+          BlocProvider<CartFormBloc>(
+            create: (BuildContext context) => getIt<CartFormBloc>(),
+          ),
+          BlocProvider<PendingCartBloc>(
+            create: (BuildContext context) => getIt<PendingCartBloc>()
+              ..add(const PendingCartEvent.getStarted()),
+          ),
+        ],
         child: MaterialApp.router(
           title: 'Shopping Cart',
           theme: lightTheme.copyWith(
