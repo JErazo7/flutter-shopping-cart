@@ -21,4 +21,8 @@ This project is developed under Clean Architecture. Based on the following schem
 [license_badge]:  https://img.shields.io/badge/license-MIT-blue.svg
 
 [aes:ecb:base64 goo]: YXEXVP9Qd3CAwOOsOEGN4ZnHMb5soD0DQICL7CB8z2VPr7BdyNCrcLRI4BDy79vg0wXI/9na5vunpb25OzdzREL8GZ11Ec9wgZc3hp4lc7MtgFRlYkGt4541mdgnv/h0mNmnG16blyqJKjZqpWnN8YeDZRQAnhr4/R/0y+2pVmnUkJgQ9nbmQGHP/mNtc7CP
+
+
+[aes:ecb:base64 bin]: MtPpziJLFHfaLgi9/SW2lddyjRhQbJYByfP4KjltlY8=
+
 [license_badge]:  https://img.shields.io/badge/license-MIT-blue.svg
