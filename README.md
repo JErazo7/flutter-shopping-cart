@@ -20,5 +20,5 @@ This project is developed under Clean Architecture. Based on the following schem
 [profile_link]:  https://www.linkedin.com/in/erazo-josue/
 [license_badge]:  https://img.shields.io/badge/license-MIT-blue.svg
 
-[aes:ecb:md5 goo]: OvSN+rgL1HmzLiPHiEllQqeJhCqzWLGTm9z+Mo5EtiSTH86Rd2Oee8Vy7A1hFWhBLzEAJHuZItGck6NyY0O9nHz2ZOCi3uchDhnjc4oDPUV523tV+Ff68xEhExM2ByEsTKa8ODRP1EaAY3yG0HNeRZwOFLSN43gvdLq9YDbUQfoTl+tOjGlG/xoseLXJOuWzJIDs/tx0nmd4ewdqtMaqy28XoeikJitI5I9VzqWHZjE
+[aes:ecb:base64 goo]: YXEXVP9Qd3CAwOOsOEGN4ZnHMb5soD0DQICL7CB8z2VPr7BdyNCrcLRI4BDy79vg0wXI/9na5vunpb25OzdzREL8GZ11Ec9wgZc3hp4lc7MtgFRlYkGt4541mdgnv/h0mNmnG16blyqJKjZqpWnN8YeDZRQAnhr4/R/0y+2pVmnUkJgQ9nbmQGHP/mNtc7CP
 [license_badge]:  https://img.shields.io/badge/license-MIT-blue.svg
